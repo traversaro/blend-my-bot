@@ -93,3 +93,11 @@ for k in range(data["knots"]):
     model.update(w_H_b, s)
     # set the current frame
     bpy.context.scene.frame_set(k)
+
+    # render image
+    bpy.context.scene.render.resolution_x = 640
+    bpy.context.scene.render.resolution_y = 320
+    bpy.context.scene.render.resolution_percentage = 100
+    bpy.context.scene.render.image_settings.file_format = 'PNG'
+    bpy.context.scene.render.filepath = "./frame" + str(k) + ".png"
+    bpy.ops.render.render(write_still = 1)
